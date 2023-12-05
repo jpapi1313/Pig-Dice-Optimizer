@@ -12,6 +12,7 @@ First, I created a model out of some loops with the logic that the player would 
 
 **Logic 1 Results**
 The results were not surprising, once the player went up to 2 rolls per turn, the number of turns that player used to get up to 100 points became somewhat competitive. I determined that 5 rolls per turn is the optimum number of rolls, resulting in an average of around 13.5 turns.  Unsurprisingly, both 4 and 6 are also very near the 5 roll mark in terms of average turns, something that we will discuss later when we consider the real-world implementations.
+
 ![image](https://github.com/jpapi1313/Pig-Dice-Optimizer/assets/43052472/f21c848a-c363-4e59-94fb-91cc2825308a)
 ![image](https://github.com/jpapi1313/Pig-Dice-Optimizer/assets/43052472/607e6584-a04d-4b04-af74-a21d8b4c1626)
 
@@ -24,6 +25,7 @@ This model gave me an unexpected result. I assumed it would also be some form of
 At first, when I saw this fluctuation I was concerned about the logic of my code and whether it was doing the optimization correctly. After thinking about it for a day or two I came up with a hypothesis that the fluctuations happen based on the probability of the number of rolls it takes to get to x number of points.
 Statistically, rolling 15 points in 5 rolls is nearly as likely as rolling 20 in 5 rolls. To prove this, to you and myself, I plugged it into a dice calculator (omnicalculator.com). Of course the calculator doesn't account for the pig so 1's are allowed in the calculation, the concept is still valid. To roll 15 with 5 rolls has a probability of 0.0837191 and to roll 20 with the same number of rolls is 0.0837191, the exact same... The reason for this is because they both are possible with many combinations of numbers. Once we calculate the probability of rolling 25 with those 5 rolls the probability goes down to 0.0162037 and finally, rolling 30 with those 5 rolls would require us to roll a 6 every time so the probability is 0.0001286008. In short, there are certain single point increasing places along the score axis that result in a higher probability of the roll count going up than at other single point increases. For example, there is an entire 5 point stretch between 15 and 20 that all have the same probabilities with 5 rolls but as soon as we go from 25 (0.0162037) to 26 (0.00900206) we see the probability drop by .00720145. Over 0.7%. In essence, certain point increments along the score axis exhibit higher probabilities of increasing the roll count than others. This non-uniform probability distribution contributes to variations in the average turns required to complete the game, resulting in the observed waves. 
 As for me and my family, I think we'll continue to trust our gut and other superstitions as to how far to push our luck, it's more fun that way. 
+
 ![image](https://github.com/jpapi1313/Pig-Dice-Optimizer/assets/43052472/c6c23d2c-8757-4e8d-ae12-2c91acc88639)
 ![image](https://github.com/jpapi1313/Pig-Dice-Optimizer/assets/43052472/d6e4d146-a669-41a3-b141-d1b3aa28b3f9)
 
